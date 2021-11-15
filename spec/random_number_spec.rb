@@ -13,7 +13,7 @@ RSpec.describe RandomNumber do
   end
 
   it 'provides randomized 5 digit number by default' do
-    expect(@random_number.rand_num.to_s.length).to eq(5)
+    expect(@random_number.rand_num.length).to eq(5)
   end
 
 

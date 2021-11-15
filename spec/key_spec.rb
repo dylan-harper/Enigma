@@ -1,16 +1,16 @@
 require './spec/spec_helper'
 require './lib/random_number'
-require './lib/keys'
+require './lib/key'
 
-RSpec.describe do
+RSpec.describe Key do
 
   before(:each) do
     @random_number = RandomNumber.new
-    @keys = Keys.new(@random_number)
+    @key = Key.new(@random_number)
   end
 
-  it 'creates keys from number' do
-    expect(@keys).to be_an_instance_of(Keys)
+  it 'exists' do
+    expect(@key).to be_an_instance_of(Key)
   end
 
   it '#make_keys' do
@@ -21,11 +21,13 @@ RSpec.describe do
       "C" => number[2] + number [3],
       "D" => number[3] + number [4]
     }
-    expect(@keys.make_keys).to eq(expected)
+    # expected = test_hash.transform_values { |value| value.to_i}
+
+    expect(@key.make_keys).to eq(expected)
   end
 
   it 'reads the random number' do
-    expect(@keys.number.rand_num).to eq(@random_number.rand_num)
+    expect(@key.number.rand_num).to eq(@random_number.rand_num)
   end
 
   it 'reads keys' do
@@ -36,6 +38,7 @@ RSpec.describe do
       "C" => number[2] + number [3],
       "D" => number[3] + number [4]
     }
+    # expected = test_hash.transform_values { |value| value.to_i}
 
     expect(@keys.keys).to eq(expected)
   end
