@@ -91,13 +91,13 @@ RSpec.describe Enigma do
     @random_number = RandomNumber.new
     @key = Key.new(@random_number)
     @offset = Offsets.new("161121")
+    require "pry"; binding.pry
     expected = {
-      "A" => @key.keys["A"],
-      "B" => @key.keys["B"],
-      "C" => @key.keys["C"],
-      "D" => @key.keys["D"]
+      "A" => (@key.keys["A"].to_i + @offset.offsets["A"].to_i).to_s,
+      "B" => (@key.keys["B"].to_i + @offset.offsets["B"].to_i).to_s,
+      "C" => (@key.keys["C"].to_i + @offset.offsets["C"].to_i).to_s,
+      "D" => (@key.keys["D"].to_i + @offset.offsets["D"].to_i).to_s
     }
-
     expect(@enigma.combine_key_offset(@key.keys, @offset.offsets)).to eq(expected)
   end
 
