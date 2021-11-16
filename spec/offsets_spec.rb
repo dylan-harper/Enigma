@@ -2,7 +2,7 @@ require './spec/spec_helper'
 require './lib/random_number'
 require './lib/offsets'
 
-RSpec.describe do
+RSpec.describe Offsets do
   before(:each) do
     @random_number = RandomNumber.new
     @offsets = Offsets.new('100221')

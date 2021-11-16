@@ -4,19 +4,15 @@ require 'date'
 
 class Input
 
-  attr_reader :message, :random_number, :key, :date
+  attr_reader :message, :random_number, :key, :date, :offset
 
   def initialize(message)
     @message = message
-    @random_number = RandomNumber.new.rand_num
+    @random_number = RandomNumber.new
     @key = Key.new(@random_number).keys
     @date = todays_date
+    @offset = Offsets.new(@date)
   end
-
-  # def make_key
-  #   key_instance =
-  #   key_instance.keys
-  # end
 
   def todays_date
     date_time_instance = DateTime.now

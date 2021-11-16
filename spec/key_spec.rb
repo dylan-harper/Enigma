@@ -4,9 +4,10 @@ require './lib/key'
 
 RSpec.describe Key do
 
-  before(:each) do
+  before :each do
     @random_number = RandomNumber.new
     @key = Key.new(@random_number)
+
   end
 
   it 'exists' do
@@ -21,17 +22,16 @@ RSpec.describe Key do
       "C" => number[2] + number [3],
       "D" => number[3] + number [4]
     }
-    # expected = test_hash.transform_values { |value| value.to_i}
 
     expect(@key.make_keys).to eq(expected)
   end
 
-  it 'reads the random number' do
-    expect(@key.number.rand_num).to eq(@random_number.rand_num)
-  end
+  # it 'reads the keys' do
+  #   expect(@key.keys).to eq(@random_number.rand_num)
+  # end
 
   it 'reads keys' do
-    number = @random_number.rand_num.to_s
+    number = @random_number.rand_num
     expected =  {
       "A" => number[0] + number [1],
       "B" => number[1] + number [2],
@@ -39,8 +39,7 @@ RSpec.describe Key do
       "D" => number[3] + number [4]
     }
     # expected = test_hash.transform_values { |value| value.to_i}
-
-    expect(@keys.keys).to eq(expected)
+    expect(@key.keys).to eq(expected)
   end
 
 end

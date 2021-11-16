@@ -25,4 +25,18 @@ RSpec.describe Enigma do
     expect(@enigma.date).to eq(@date)
   end
 
+  it 'contains alphabet as attribute' do
+    expected = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
+
+    expect(@enigma.alphabet).to eq(expected)
+  end
+
+  it '#applies_keys' do
+    @key = @input.key
+    @offset = @input.offset.offsets
+
+    expect(@enigma.applies_keys("hello world", @key, @offset)).to eq(-1)
+  end
+
+
 end
