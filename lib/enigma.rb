@@ -9,7 +9,6 @@ class Enigma < Input
   include Decryption
 
   attr_reader :alphabet
-  # include Output
 
   def initialize
     super(message)
@@ -22,8 +21,8 @@ class Enigma < Input
     applies_keys(message, key, offset)
   end
 
-  def decrypt(encryption, key, date)
-
+  def decrypt(ciphertext, key = @key, offset = @offset)
+    decodes(ciphertext, key, offset)
   end
 
 end
