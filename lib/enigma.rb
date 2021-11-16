@@ -10,8 +10,7 @@ class Enigma < Input
   include Decryption
   # include EnigmaHelper
 
-
-  attr_reader :alphabet
+  attr_reader :alphabet, :key, :offset
 
   def initialize(message)
     super(message)
