@@ -30,6 +30,7 @@ module Decryption
             if @alphabet[new_ind] == nil
               while @alphabet[new_ind] == nil do
                 new_ind = new_ind + 27
+
               end
             end
             replace = @alphabet[new_ind]
@@ -37,6 +38,6 @@ module Decryption
         end
       end
     end
-require "pry"; binding.pry
+
   end
 end

@@ -42,11 +42,11 @@ module Encryption
       end
     end
     encrypted_message = encrypted_message.join("")
-    encryption = {
+    @encryption = {
       encryption: encrypted_message,
       key: @random_number.rand_num,
       date: @date
     }
-    encryption
+    @encryption
   end
 end
