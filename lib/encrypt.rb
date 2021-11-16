@@ -1,4 +1,1 @@
-require './lib/enigma'
-require './lib/input'
-
-puts 
+ARGV == ["message.txt", File.open("encrypted.txt", "w"]
