@@ -3,17 +3,14 @@ require './lib/input'
 require './lib/offsets'
 require './lib/encryption'
 require './lib/decryption'
-require './lib/enigma_helper'
 
 class Enigma < Input
   include Encryption
   include Decryption
-  # include EnigmaHelper
 
+  attr_reader :alphabet, :key, :offset
 
-  attr_reader :alphabet
-
-  def initialize(message)
+  def initialize
     super(message)
     @alphabet = ("a".."z").to_a << " "
     @encryption = {}

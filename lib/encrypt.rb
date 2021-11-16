@@ -7,7 +7,7 @@ ARGV == ["message.txt", enc]
 # message = Input.new("hello world")
 file = File.open("message.txt", "r")
 message = file.read.chomp
-enigma = Enigma.new(message)
+enigma = Enigma.new(message) #added message argument
 encryption = enigma.encrypt(message)
 
 enc.write(encryption)

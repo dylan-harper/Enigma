@@ -20,7 +20,6 @@ RSpec.describe Input do
     expect(@input.message).to eq('hello world')
     expect(@input.date).to eq("161121")
     expect(@input.random_number).to be_an_instance_of(RandomNumber)
-    expect(@input.offset).to be_an_instance_of(Offsets)
   end
 
 end
