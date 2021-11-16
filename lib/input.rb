@@ -12,7 +12,7 @@ class Input
     @random_number = RandomNumber.new
     @key = Key.new(@random_number).keys
     @date = todays_date
-    @offset = Offsets.new(@date)
+    @offset = Offsets.new(@date).offsets
   end
 
   def todays_date
