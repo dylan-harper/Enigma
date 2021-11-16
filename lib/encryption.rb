@@ -42,9 +42,15 @@ module Encryption
       end
     end
     encrypted_message = encrypted_message.join("")
+    k = key.values.join
+    k = k.chars
+    k.delete_at(1)
+    k.delete_at(3)
+    k.delete_at(4)
+    k = k.join
     @encryption = {
       encryption: encrypted_message,
-      key: @random_number.rand_num,
+      key: k,
       date: @date
     }
     @encryption
