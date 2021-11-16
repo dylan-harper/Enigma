@@ -14,6 +14,7 @@ class Enigma < Input
     super(message)
     @alphabet = ("a".."z").to_a << " "
     @encryption = {}
+    @decryption = {}
 
   end
 
