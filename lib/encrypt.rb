@@ -1,10 +1,15 @@
-require './lib/input'
 require './lib/enigma'
 
+enc = File.open("encrypted.txt", "w")
 
+ARGV == ["message.txt", enc]
 
-ARGV == ["message.txt", File.open("encrypted.txt", "w")]
+# message = Input.new("hello world")
+file = File.open("message.txt", "r")
+message = file.read.chomp
+enigma = Enigma.new(message)
+encryption = enigma.encrypt(message)
 
-encrypted
+enc.write(encryption)
 
-puts "Encrypted text in message.txt"
+puts "Encrypted text in message.txt to encrypted.txt"
