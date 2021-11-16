@@ -57,5 +57,13 @@ RSpec.describe Enigma do
   #   expect(@enigma.encrypt(message, key, offset)).to eq(expected)
   # end
 
+  it '#decodes' do
+    @key = @input.key
+    @offset = @input.offset.offsets
+    test = @enigma.applies_keys("hello world", @key, @offset)
+    test = test[:encryption]
+require "pry"; binding.pry
+    expect(@enigma.decodes(test, @key, @offset)).to eq("hello world")
+  end
 
 end
