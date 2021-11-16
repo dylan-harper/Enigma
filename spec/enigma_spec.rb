@@ -1,7 +1,7 @@
 require './spec/spec_helper'
 require './lib/enigma'
 require './lib/input'
-require 'date' 
+require 'date'
 
 RSpec.describe Enigma do
 
@@ -34,9 +34,28 @@ RSpec.describe Enigma do
   it '#applies_keys' do
     @key = @input.key
     @offset = @input.offset.offsets
+    expected = {
+      encryption: 'vhgobcrreoz',
+      key: @key,
+      date: @date
+    }
 
-    expect(@enigma.applies_keys("hello world", @key, @offset)).to eq(-1)
+    expect(@enigma.applies_keys("hello world", @key, @offset)).to eq(expected)
   end
+
+  # it '#encrypt' do
+  #   random_number = RandomNumber.new
+  #   message = "hello world"
+  #   key = Key.new(random_number).keys
+  #   offset = Offsets.new(@date)
+  #   expected = {
+  #     encryption: 'x',
+  #     key: key,
+  #     date: offset.date
+  #   }
+  #
+  #   expect(@enigma.encrypt(message, key, offset)).to eq(expected)
+  # end
 
 
 end
