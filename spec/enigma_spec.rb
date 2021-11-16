@@ -1,6 +1,9 @@
 require './spec/spec_helper'
 require './lib/enigma'
 require './lib/input'
+require './lib/key'
+require './lib/random_number'
+require './lib/offsets'
 require 'date'
 
 RSpec.describe Enigma do
@@ -58,12 +61,18 @@ RSpec.describe Enigma do
   # end
 
   it '#decodes' do
-    @key = @input.key
-    @offset = @input.offset.offsets
-    test = @enigma.applies_keys("hello world", @key, @offset)
+    @random_number = RandomNumber.new
+    @key = Key.new(@random_number)
+    @offset = Offsets.new(@date)
+    test = @enigma.applies_keys("hello world", @key.keys, @offset.offsets)
     test = test[:encryption]
-require "pry"; binding.pry
-    expect(@enigma.decodes(test, @key, @offset)).to eq("hello world")
+    expected = {
+      decryption: "hello world",
+      key: @key.random_number,
+      date: @date
+    }
+
+    expect(@enigma.decodes(test, @key.keys, @offset.offsets)).to eq(expected)
   end
 
 end

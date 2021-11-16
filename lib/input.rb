@@ -1,5 +1,6 @@
 require './lib/random_number'
 require './lib/key'
+require './lib/offsets'
 require 'date'
 
 class Input

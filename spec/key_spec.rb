@@ -26,10 +26,6 @@ RSpec.describe Key do
     expect(@key.make_keys).to eq(expected)
   end
 
-  # it 'reads the keys' do
-  #   expect(@key.keys).to eq(@random_number.rand_num)
-  # end
-
   it 'reads keys' do
     number = @random_number.rand_num
     expected =  {
@@ -38,7 +34,7 @@ RSpec.describe Key do
       "C" => number[2] + number [3],
       "D" => number[3] + number [4]
     }
-    # expected = test_hash.transform_values { |value| value.to_i}
+
     expect(@key.keys).to eq(expected)
   end
 
