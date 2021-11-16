@@ -26,10 +26,11 @@ module Decryption
 
       @alphabet.each_with_index do |letter, ind|
           if char == letter
-            new_ind = ind + move
+            new_ind = ind - move
             if @alphabet[new_ind] == nil
               while @alphabet[new_ind] == nil do
-                new_ind = new_ind - 27
+                new_ind = new_ind + 27
+
               end
             end
             replace = @alphabet[new_ind]
@@ -38,6 +39,5 @@ module Decryption
       end
     end
 
-require "pry"; binding.pry
   end
 end
