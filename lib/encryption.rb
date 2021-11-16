@@ -15,12 +15,39 @@ module Encryption
       end
     end
 
-    message_length = message.length
     characters_array = message.chars
 
-    characters_array.each do |char|
+    encrypted_message = []
+    characters_array.each_with_index do |char, index|
+      if index == 0 || index % 4 == 0
+        move = combined["A"].to_i
+      elsif index == 1 || index % 4 == 1
+        move = combined["B"].to_i
+      elsif index == 2 || index % 4 == 2
+        move = combined["C"].to_i
+      elsif index == 3 || index % 4 == 3
+        move = combined["D"].to_i
+      end
+        @alphabet.each_with_index do |letter, ind|
+          if char == letter
+            new_ind = ind + move
+            if @alphabet[new_ind] == nil
+              while @alphabet[new_ind] == nil do
+                new_ind = new_ind - 27
+              end
+            end
+            replace = @alphabet[new_ind]
+            encrypted_message << replace
+        end
+      end
+    end
+    encrypted_message = encrypted_message.join("")
+    hash = {
+      encryption: encrypted_message,
+      key: @random_number.rand_num,
+      date: @date
+    }
 
-
+require "pry"; binding.pry
   end
-
 end

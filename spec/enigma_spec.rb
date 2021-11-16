@@ -1,7 +1,7 @@
 require './spec/spec_helper'
 require './lib/enigma'
 require './lib/input'
-require 'date' #make class for date?
+require 'date' 
 
 RSpec.describe Enigma do
 
