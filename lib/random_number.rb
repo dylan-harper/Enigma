@@ -15,9 +15,6 @@ class RandomNumber #needs to be able to make 0 first digit
 
     joined_strings = first + second + third + fourth + fifth
     joined_strings
-    # joined_digits = joined_strings.to_i
-    #
-    # joined_digits
   end
 
 

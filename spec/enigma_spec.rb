@@ -87,4 +87,18 @@ RSpec.describe Enigma do
     expect(@enigma.decodes(test, @key.keys, @offset.offsets)).to eq(expected)
   end
 
+  it '#combine_key_offset' do
+    @random_number = RandomNumber.new
+    @key = Key.new(@random_number)
+    @offset = Offsets.new("161121")
+    expected = {
+      "A" => @key.keys["A"],
+      "B" => @key.keys["B"],
+      "C" => @key.keys["C"],
+      "D" => @key.keys["D"]
+    }
+
+    expect(@enigma.combine_key_offset(@key.keys, @offset.offsets)).to eq(expected)
+  end
+
 end
