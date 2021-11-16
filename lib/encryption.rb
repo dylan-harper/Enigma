@@ -42,12 +42,11 @@ module Encryption
       end
     end
     encrypted_message = encrypted_message.join("")
-    hash = {
+    encryption = {
       encryption: encrypted_message,
       key: @random_number.rand_num,
       date: @date
     }
-
-require "pry"; binding.pry
+    encryption
   end
 end
