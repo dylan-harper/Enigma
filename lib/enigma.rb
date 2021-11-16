@@ -10,6 +10,7 @@ class Enigma < Input
   include Decryption
   # include EnigmaHelper
 
+
   attr_reader :alphabet
 
   def initialize(message)

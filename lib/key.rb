@@ -6,7 +6,6 @@ class Key
   def initialize(random_number)
     @random_number = random_number.rand_num
     @keys = make_keys
-    # @key_string = modify_keys
   end
 
   def make_keys
