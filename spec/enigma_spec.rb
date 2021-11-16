@@ -35,30 +35,42 @@ RSpec.describe Enigma do
   end
 
   it '#applies_keys' do
-    @key = @input.key
-    @offset = @input.offset.offsets
+    @random_number = RandomNumber.new
+    @key = "23758"
+    @keys = {
+      "A" => "23",
+      "B" => "37",
+      "C" => "75",
+      "D" => "58"
+    }
+    @offset = Offsets.new("161121").offsets
     expected = {
-      encryption: 'vhgobcrreoz',
+      encryption: 'jujqqputtab',
       key: @key,
-      date: @date
+      date: "161121"
     }
 
-    expect(@enigma.applies_keys("hello world", @key, @offset)).to eq(expected)
+    expect(@enigma.applies_keys("hello world", @keys, @offset)).to eq(expected)
   end
 
-  # it '#encrypt' do
-  #   random_number = RandomNumber.new
-  #   message = "hello world"
-  #   key = Key.new(random_number).keys
-  #   offset = Offsets.new(@date)
-  #   expected = {
-  #     encryption: 'x',
-  #     key: key,
-  #     date: offset.date
-  #   }
-  #
-  #   expect(@enigma.encrypt(message, key, offset)).to eq(expected)
-  # end
+  it '#encrypt' do
+    @random_number = RandomNumber.new
+    @key = "23758"
+    @keys = {
+      "A" => "23",
+      "B" => "37",
+      "C" => "75",
+      "D" => "58"
+    }
+    @offset = Offsets.new("161121").offsets
+    expected = {
+      encryption: 'jujqqputtab',
+      key: @key,
+      date: "161121"
+    }
+
+    expect(@enigma.applies_keys("hello world", @keys, @offset)).to eq(expected)
+  end
 
   it '#decodes' do
     @random_number = RandomNumber.new

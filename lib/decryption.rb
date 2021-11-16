@@ -38,9 +38,15 @@ module Decryption
       end
     end
     decrypted_message = decrypted_message.join("")
+    k = key.values.join
+    k = k.chars
+    k.delete_at(1)
+    k.delete_at(3)
+    k.delete_at(4)
+    k = k.join
     @decryption = {
       decryption: decrypted_message,
-      key: @random_number.rand_num,
+      key: k,
       date: @date
     }
     @decryption
