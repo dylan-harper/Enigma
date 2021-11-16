@@ -22,8 +22,8 @@ class Enigma < Input
     applies_keys(message, key, offset)
   end
 
-  def decrypt(encryption, key, date)
-
-  end
+  # def decrypt(ciphertext, key = @key, date = @date)
+  #
+  # end
 
 end
