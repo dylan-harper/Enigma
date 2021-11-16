@@ -1,24 +1,21 @@
-require './lib/random_number'
 
 class Key
 
-  attr_reader :keys#, :num
+  attr_reader :keys
 
-  def initialize(num)
-    @num = num
+  def initialize(random_number)
+    @random_number = random_number.rand_num
     @keys = make_keys
   end
 
   def make_keys
     keys_hash = {}
-    # require "pry"; binding.pry
 
-    keys_hash["A"] = @num[0] + @num[1]
-    keys_hash["B"] = @num[1] + @num[2]
-    keys_hash["C"] = @num[2] + @num[3]
-    keys_hash["D"] = @num[3] + @num[4]
+    keys_hash["A"] = @random_number[0] + @random_number[1]
+    keys_hash["B"] = @random_number[1] + @random_number[2]
+    keys_hash["C"] = @random_number[2] + @random_number[3]
+    keys_hash["D"] = @random_number[3] + @random_number[4]
 
-    # key_hash = key_hash.transform_values { |value| value.to_i }
     keys_hash
   end
 
