@@ -27,6 +27,7 @@ class Enigma < Input
 
     characters_array = message.chars
     holds_letters = []
+
     move_encrypt(characters_array, combined, holds_letters)
 
     encrypted_message = holds_letters.join("")
@@ -53,6 +54,7 @@ class Enigma < Input
 
     characters_array = ciphertext.chars
     holds_letters = []
+
     move_decrypt(characters_array, combined, holds_letters)
 
     decrypted_message = holds_letters.join("")
