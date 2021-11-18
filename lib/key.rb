@@ -1,20 +1,24 @@
 
 class Key
 
-  attr_reader :keys, :key_string, :random_number
+  attr_reader :key_string#, :key_hash
 
   def initialize(random_number)
-    @random_number = random_number.rand_num
-    @keys = make_keys
+    @key_string = random_number.rand_num
+    # @key_hash = make_keys
   end
 
   def make_keys
     keys_hash = {}
 
-    keys_hash["A"] = @random_number[0] + @random_number[1]
-    keys_hash["B"] = @random_number[1] + @random_number[2]
-    keys_hash["C"] = @random_number[2] + @random_number[3]
-    keys_hash["D"] = @random_number[3] + @random_number[4]
+    keys_hash["A"] = @key_string[0] + @key_string[1]
+    keys_hash["B"] = @key_string[1] + @key_string[2]
+    keys_hash["C"] = @key_string[2] + @key_string[3]
+    keys_hash["D"] = @key_string[3] + @key_string[4]
+
+    if keys_hash["A"].length == 1
+      keys_hash["A"] = "0" + keys_hash["A"]
+    end
 
     keys_hash
   end

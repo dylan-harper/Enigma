@@ -1,4 +1,4 @@
-class RandomNumber #needs to be able to make 0 first digit
+class RandomNumber
 
   attr_reader :rand_num
 
@@ -7,7 +7,7 @@ class RandomNumber #needs to be able to make 0 first digit
   end
 
   def randomize
-    first = rand(1..9).to_s #fix this 0
+    first = rand(0..9).to_s
     second = rand(0..9).to_s
     third = rand(0..9).to_s
     fourth = rand(0..9).to_s

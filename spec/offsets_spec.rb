@@ -17,14 +17,7 @@ RSpec.describe Offsets do
   end
 
   it '#make_offsets' do
-    expected = {
-      "A" => "8",
-      "B" => "8",
-      "C" => "4",
-      "D" => "1"
-    }
-
-    expect(@offsets.make_offsets).to eq(expected)
+    expect(@offsets.make_offsets).to eq('8841')
   end
 
 

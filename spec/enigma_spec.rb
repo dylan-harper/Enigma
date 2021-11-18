@@ -1,9 +1,5 @@
 require './spec/spec_helper'
 require './lib/enigma'
-require './lib/input'
-require './lib/key'
-require './lib/random_number'
-require './lib/offsets'
 require 'date'
 
 RSpec.describe Enigma do
@@ -16,7 +12,6 @@ RSpec.describe Enigma do
 
   before(:each) do
     @date = date
-    @input = Input.new("hello world")
     @enigma = Enigma.new
   end
 
@@ -28,77 +23,35 @@ RSpec.describe Enigma do
     expect(@enigma.date).to eq(@date)
   end
 
+  it 'has empty encryption/decryption by default' do
+    expect(@enigma.encryption).to eq({})
+    expect(@enigma.decryption).to eq({})
+  end
+
   it 'contains alphabet as attribute' do
     expected = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
 
     expect(@enigma.alphabet).to eq(expected)
   end
 
-  it '#applies_keys' do
-    @random_number = RandomNumber.new
-    @key = "23758"
-    @keys = {
-      "A" => "23",
-      "B" => "37",
-      "C" => "75",
-      "D" => "58"
-    }
-    @offset = Offsets.new("161121").offsets
-    expected = {
-      encryption: 'jujqqputtab',
-      key: @key,
-      date: "161121"
-    }
-
-    expect(@enigma.applies_keys("hello world", @keys, @offset)).to eq(expected)
-  end
-
   it '#encrypt' do
-    @random_number = RandomNumber.new
-    @key = "23758"
-    @keys = {
-      "A" => "23",
-      "B" => "37",
-      "C" => "75",
-      "D" => "58"
-    }
-    @offset = Offsets.new("161121").offsets
     expected = {
-      encryption: 'jujqqputtab',
-      key: @key,
-      date: "161121"
+      date: "040895",
+      encryption: "keder!ohulw!*&^",
+      key: "02715"
     }
 
-    expect(@enigma.applies_keys("hello world", @keys, @offset)).to eq(expected)
+    expect(@enigma.encrypt("HELLO!WORLD!*&^", "02715", "040895")).to eq(expected)
   end
 
-  it '#decodes' do
-    @random_number = RandomNumber.new
-    @key = Key.new(@random_number)
-    @offset = Offsets.new(@date)
-    test = @enigma.applies_keys("hello world", @key.keys, @offset.offsets)
-    test = test[:encryption]
+  it '#decrypt' do
     expected = {
+      date: "040895",
       decryption: "hello world",
-      key: @key.random_number,
-      date: @date
+      key: "02715"
     }
 
-    expect(@enigma.decodes(test, @key.keys, @offset.offsets)).to eq(expected)
-  end
-
-  it '#combine_key_offset' do
-    @random_number = RandomNumber.new
-    @key = Key.new(@random_number)
-    @offset = Offsets.new("161121")
-    require "pry"; binding.pry
-    expected = {
-      "A" => (@key.keys["A"].to_i + @offset.offsets["A"].to_i).to_s,
-      "B" => (@key.keys["B"].to_i + @offset.offsets["B"].to_i).to_s,
-      "C" => (@key.keys["C"].to_i + @offset.offsets["C"].to_i).to_s,
-      "D" => (@key.keys["D"].to_i + @offset.offsets["D"].to_i).to_s
-    }
-    expect(@enigma.combine_key_offset(@key.keys, @offset.offsets)).to eq(expected)
+    expect(@enigma.decrypt("keder ohulw", "02715", "040895")).to eq(expected)
   end
 
 end
