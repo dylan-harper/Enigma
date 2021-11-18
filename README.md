@@ -2,7 +2,7 @@
 ## Functionality
 * Meets expectations. Encrypt and Decrypt methods run properly, CLI runs with no issues I can find.
 ## OOP
-* Meets expectations. Incorporated inheritance, modules, and made numerous classes to encapsulate data. *
+* Meets expectations. Incorporated inheritance, modules, and made numerous classes to encapsulate data. Encrypt and Decrypt methods use helper methods. Some helper methods have their own helper methods. *
 ## Conventions, Mechanics
 * Between Meets expectations. Tried to make code readable. Classes are properly formatted and indented. *
 ## TDD
