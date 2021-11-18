@@ -1,29 +1,69 @@
-require 'date'
 require './lib/input'
-require './lib/offsets'
-require './lib/encryption'
-require './lib/decryption'
+require './lib/enigma_helper'
 
 class Enigma < Input
-  include Encryption
-  include Decryption
+  include EnigmaHelper
 
-  attr_reader :alphabet, :key, :offset
+  attr_reader :alphabet, :encryption, :decryption
 
   def initialize
-    super(message)
+    super()
     @alphabet = ("a".."z").to_a << " "
     @encryption = {}
     @decryption = {}
 
   end
 
-  def encrypt(message, key = @key, offset = @offset)
-    applies_keys(message, key, offset)
+  def encrypt(message, key = @key, date = @date)
+
+    message = message.downcase
+
+    offset_instance = Offsets.new(date)
+    offset = offset_instance.shifts
+
+    key_hash = {}
+    offset_hash = {}
+    combined = {}
+
+    combine_key_offset(key, offset, key_hash, offset_hash, combined)
+
+    characters_array = message.chars
+    holds_letters = []
+    move_encrypt(characters_array, combined, holds_letters)
+
+    encrypted_message = holds_letters.join("")
+
+    @encryption = {
+      encryption: encrypted_message,
+      key: key,
+      date: date
+    }
   end
 
-  def decrypt(ciphertext, key = @key, offset = @offset)
-    decodes(ciphertext, key, offset)
+  def decrypt(ciphertext, key = @key, date = @date)
+
+    ciphertext = ciphertext.downcase
+
+    offset_instance = Offsets.new(date)
+    offset = offset_instance.shifts
+
+    key_hash = {}
+    offset_hash = {}
+    combined = {}
+
+    combine_key_offset(key, offset, key_hash, offset_hash, combined)
+
+    characters_array = ciphertext.chars
+    holds_letters = []
+    move_decrypt(characters_array, combined, holds_letters)
+
+    decrypted_message = holds_letters.join("")
+
+    @decryption = {
+      decryption: decrypted_message,
+      key: key,
+      date: date
+    }
   end
 
 end

@@ -5,14 +5,12 @@ require 'date'
 
 class Input
 
-  attr_reader :message, :random_number, :key, :date, :offset
+  attr_reader :message, :random_number, :key, :date
 
-  def initialize(message)
-    @message = message
+  def initialize()
     @random_number = RandomNumber.new
-    @key = Key.new(@random_number).keys
+    @key = Key.new(@random_number).key_string
     @date = todays_date
-    @offset = Offsets.new(@date).offsets
   end
 
   def todays_date
