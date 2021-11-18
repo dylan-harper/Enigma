@@ -8,6 +8,7 @@ class Input
   attr_reader :message, :random_number, :key, :date
 
   def initialize()
+    @alphabet = ("a".."z").to_a << " "
     @random_number = RandomNumber.new
     @key = Key.new(@random_number).key_string
     @date = todays_date

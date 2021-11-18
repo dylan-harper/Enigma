@@ -33,6 +33,7 @@ module EnigmaHelper
         end
       end
     end
+    combined
   end
 
 
@@ -73,6 +74,7 @@ module EnigmaHelper
         end
       end
     end
+    holds_letters
   end
 
   def move_decrypt(characters_array, combined, holds_letters)
@@ -102,5 +104,6 @@ module EnigmaHelper
         end
       end
     end
+    holds_letters
   end
 end
