@@ -1,28 +1,24 @@
 require './lib/enigma'
 
-decr = File.open("decrypted.txt", "w")
 
-ARGV == ["encrypted.txt", decr]
+decr = File.open("decrypted.txt", "w")
+key = File.open("key.txt", "r")
+date = File.open("date.txt", "r")
+
+ARGV == ["encrypted.txt", decr, key, date]
+
 new_file = File.open("encrypted.txt", "r")
 new_file_data = File.read("encrypted.txt")
-enigma = Enigma.new('message')
+key_data = File.read("key.txt")
+date_data = File.read("date.txt")
 
-key = {
-  "A" => "36",
-  "B" => "68",
-  "C" => "82",
-  "D" => "26"
-}
+enigma = Enigma.new
 
-offset = {
-  "A" => "6",
-  "B" => "6",
-  "C" => "4",
-  "D" => "1"
-}
 
-decryption = enigma.decrypt(new_file_data, key, offset)
+
+
+decryption = enigma.decrypt(new_file_data, key_data, date_data)
 
 decr.write(decryption[:decryption])
 
-puts "Created 'decrypted.txt'" #with key #{} and date #{}."
+puts "Created 'decrypted.txt' with key #{key_data} and date #{date_data}."

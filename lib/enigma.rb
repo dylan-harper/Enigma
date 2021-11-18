@@ -8,10 +8,8 @@ class Enigma < Input
 
   def initialize
     super()
-    @alphabet = ("a".."z").to_a << " "
     @encryption = {}
     @decryption = {}
-
   end
 
   def encrypt(message, key = @key, date = @date)
