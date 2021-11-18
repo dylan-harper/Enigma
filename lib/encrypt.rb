@@ -8,7 +8,6 @@ message = file.read.chomp
 enigma = Enigma.new
 encryption = enigma.encrypt(message)#, '01234', '012345')
 
-
 key_file = File.open("key.txt", "w")
 date_file = File.open("date.txt", "w")
 

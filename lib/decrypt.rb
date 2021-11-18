@@ -1,6 +1,5 @@
 require './lib/enigma'
 
-
 decr = File.open("decrypted.txt", "w")
 key = File.open("key.txt", "r")
 date = File.open("date.txt", "r")
@@ -13,9 +12,6 @@ key_data = File.read("key.txt")
 date_data = File.read("date.txt")
 
 enigma = Enigma.new
-
-
-
 
 decryption = enigma.decrypt(new_file_data, key_data, date_data)
 
