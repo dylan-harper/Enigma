@@ -6,6 +6,6 @@
 ## Conventions, Mechanics
 * Between Meets expectations. Tried to make code readable. Classes are properly formatted and indented. *
 ## TDD
-* Meets expectations. Test coverage is over 99%. Classes have their own spec files, individual methods have their own unit tests. *
+* Meets expectations. Test coverage is over 99%. Classes have their own spec files, individual methods have their own unit tests. Helper methods have unit tests.*
 ## VC
 * Project has 30 commits *
