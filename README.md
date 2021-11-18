@@ -1,6 +1,6 @@
 # enigma
 ## Functionality
-* Meets expectations. Encrypt and Decrypt methods run properly, CLI runs (although decrypted.txt requires some hard coding).*
+* Meets expectations. Encrypt and Decrypt methods run properly, CLI runs with no issues I can find.
 ## OOP
 * Meets expectations. Incorporated inheritance, modules, and made numerous classes to encapsulate data. *
 ## Conventions, Mechanics
