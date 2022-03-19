@@ -1,11 +1,13 @@
 # enigma
+## Description
+* Enigma is an encrypt/decrypt project written in Ruby. When used properly you can clone down this repo and input your message into `message.txt`, using CL to run encrypt/decrypt.
 ## Functionality
-* Meets expectations. Encrypt and Decrypt methods run properly, CLI runs with no issues I can find.
+*  Encrypt and Decrypt methods run properly, CLI runs with no issues.
 ## OOP
-* Meets expectations. Incorporated inheritance, modules, and made numerous classes to encapsulate data. Encrypt and Decrypt methods use helper methods. Some helper methods have their own helper methods. 
+* Incorporated inheritance, modules, and made numerous classes to encapsulate data. Encrypt and Decrypt methods use helper methods. Some helper methods have their own helper methods. 
 ## Conventions, Mechanics
-* Meets expectations. Tried to make code readable. Classes are properly formatted and indented. My own criticism is for move_encrypt / move_decrypt methods that are long and not necessarily DRY. I couldn't find a way to use helper methods because I was sharing block variables between the enumerables. 
+* Code is readable. Classes are properly formatted and indented.
 ## TDD
-* Meets expectations. Test coverage is over 99%. Classes have their own spec files, individual methods have their own unit tests. Helper methods have unit tests.
+* Test coverage is over 99%. Classes have their own spec files, individual methods have their own unit tests. Helper methods have unit tests.
 ## VC
 * Project has 30+ commits
